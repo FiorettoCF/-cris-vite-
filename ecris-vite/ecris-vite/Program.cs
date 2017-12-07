@@ -15,7 +15,7 @@ namespace ecris_vite
 
             string[] secretWord =
                         {
-               "bill gates", "rock", "voix", "lady", "anti", "rare", "da", "salut"
+               "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations"
             };
 
             /*aléatoire*/
@@ -26,10 +26,20 @@ namespace ecris_vite
 
 
 
+            /*quitter le programme*/
+            Console.Write("\nPresser une y pour terminer le programme ... ");
+            while (true)
+            {
+                ConsoleKeyInfo result = Console.ReadKey();
+                if (result.Key == ConsoleKey.Y)
+                {
+                    Console.ReadKey();
+                    break;
+                }
 
-            Console.Write("\nPresser une touche pour terminer le programme ... ");
-            Console.ReadKey();
-       
+            }
+            /*quitter le programme*/
+
         }
     }
 }
