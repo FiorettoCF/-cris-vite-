@@ -13,36 +13,57 @@ namespace ecris_vite
             Random rand = new Random();
             int rndNumber;
             string strmotsaisie;
-
-            /*mots aléatoire*/
-            string[] secretWord =
-                        {
+            int i= 0;
+            bool y = false;
+            do
+            {
+                /*mots aléatoire normal*/
+                string[] secretWordNormal =
+                            {
                "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations", "trottinette"
-            };
+                            };
+                /*aléatoire normal*/
+                rndNumber = rand.Next(0, secretWordNormal.Length);
+                /*aléatoire*/
+                string motAleatoireNormal = secretWordNormal[rndNumber];
+                /*mots aleatoire normal*/
 
-            /*aléatoire*/
-            rndNumber = rand.Next(0, secretWord.Length);
-            /*aléatoire*/
-            string motAleatoire = secretWord[rndNumber];
-            Console.WriteLine("\n{0}", motAleatoire);
-            /*mots aléatoire*/
+                Console.WriteLine("\nRegles: vous devez écrire les mots qui s'afficheront a l'écran le plus vite possible.");
 
-            Console.Write("\nECRIS:");
-            strmotsaisie = Console.ReadLine();
+                /*mots aléatoire normal*/
+                Console.WriteLine("\n{0}", motAleatoireNormal);
+                /*mots aléatoire normal*/
 
-
-            if (strmotsaisie == motAleatoire)
-            {
-                Console.WriteLine("Bien joué");
-                
-            }
-            else
-            {
-                Console.WriteLine("PERDU");
+                Console.Write("\nECRIS:");
+                strmotsaisie = Console.ReadLine();
 
 
-            }
-            
+                if (strmotsaisie == motAleatoireNormal)
+                {
+                    Console.Clear();
+                    Console.Write("\nPoints ");
+                    i++;
+                    Console.WriteLine(i);
+                    if (i == 10)
+                    {
+                        y = true;
+                        Console.WriteLine("\n Vous avez Gagné, bien joué");
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.Write("\nPoints ");
+                    i--;
+                    Console.WriteLine(i);
+                    if (i == -10)
+                    {
+                        y = true;
+                        Console.WriteLine("\n Vous avez PERDU");
+                    }
+
+                }
+            } while (y != true);
 
             /*quitter le programme*/
             Console.Write("\nPresser sur End deux fois pour terminer le programme");
