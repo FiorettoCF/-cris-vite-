@@ -12,26 +12,44 @@ namespace ecris_vite
         {
             Random rand = new Random();
             int rndNumber;
+            string strmotsaisie;
 
+            /*mots aléatoire*/
             string[] secretWord =
                         {
-               "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations"
+               "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations", "trottinette"
             };
 
             /*aléatoire*/
             rndNumber = rand.Next(0, secretWord.Length);
             /*aléatoire*/
             string motAleatoire = secretWord[rndNumber];
-            Console.WriteLine("{0}", motAleatoire);
+            Console.WriteLine("\n{0}", motAleatoire);
+            /*mots aléatoire*/
+
+            Console.Write("\nECRIS:");
+            strmotsaisie = Console.ReadLine();
 
 
+            if (strmotsaisie == motAleatoire)
+            {
+                Console.WriteLine("Bien joué");
+                
+            }
+            else
+            {
+                Console.WriteLine("PERDU");
+
+
+            }
+            
 
             /*quitter le programme*/
-            Console.Write("\nPresser une y pour terminer le programme ... ");
+            Console.Write("\nPresser sur End deux fois pour terminer le programme");
             while (true)
             {
                 ConsoleKeyInfo result = Console.ReadKey();
-                if (result.Key == ConsoleKey.Y)
+                if (result.Key == ConsoleKey.End)
                 {
                     Console.ReadKey();
                     break;
@@ -39,6 +57,7 @@ namespace ecris_vite
 
             }
             /*quitter le programme*/
+           
 
         }
     }
