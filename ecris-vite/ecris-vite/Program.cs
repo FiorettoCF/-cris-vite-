@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ecris_vite
@@ -13,8 +14,10 @@ namespace ecris_vite
             Random rand = new Random();
             int rndNumber;
             string strmotsaisie;
-            int i= 0;
-            bool y = false;
+            int points = 0;
+            bool fin = false;
+            int temps = 0;
+            
             do
             {
                 /*mots aléatoire normal*/
@@ -33,20 +36,32 @@ namespace ecris_vite
                 /*mots aléatoire normal*/
                 Console.WriteLine("\n{0}", motAleatoireNormal);
                 /*mots aléatoire normal*/
-
                 Console.Write("\nECRIS:");
+
+
+               
+
+               do
+
+            {
+                Thread.Sleep(4000);
+                Console.Clear();
+                Console.Write("\nLost");
+                temps = 0;
+            } while (temps != 0);
                 strmotsaisie = Console.ReadLine();
+                
 
 
                 if (strmotsaisie == motAleatoireNormal)
                 {
                     Console.Clear();
                     Console.Write("\nPoints ");
-                    i++;
-                    Console.WriteLine(i);
-                    if (i == 10)
+                    points++;
+                    Console.WriteLine(points);
+                    if (points == 10)
                     {
-                        y = true;
+                        fin = true;
                         Console.WriteLine("\n Vous avez Gagné, bien joué");
                     }
                 }
@@ -54,17 +69,19 @@ namespace ecris_vite
                 {
                     Console.Clear();
                     Console.Write("\nPoints ");
-                    i--;
-                    Console.WriteLine(i);
-                    if (i == -10)
+                    points--;
+                    Console.WriteLine(points);
+                    if (points == -10)
                     {
-                        y = true;
+                        fin = true;
                         Console.WriteLine("\n Vous avez PERDU");
                     }
 
                 }
-            } while (y != true);
+            } while (fin != true);
 
+            
+            
             /*quitter le programme*/
             Console.Write("\nPresser sur End deux fois pour terminer le programme");
             while (true)
