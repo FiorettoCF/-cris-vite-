@@ -37,19 +37,15 @@ namespace ecris_vite
                 Console.WriteLine("\n{0}", motAleatoireNormal);
                 /*mots aléatoire normal*/
                 Console.Write("\nECRIS:");
-
-
-               
-
-               do
-
+               strmotsaisie = Console.ReadLine();
+              
+             do
             {
                 Thread.Sleep(4000);
                 Console.Clear();
                 Console.Write("\nLost");
                 temps = 0;
             } while (temps != 0);
-                strmotsaisie = Console.ReadLine();
                 
 
 
