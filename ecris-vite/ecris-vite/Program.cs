@@ -20,6 +20,7 @@ namespace ecris_vite
             int points = 0;
             bool fin = false;
             Stopwatch stopWatch = new Stopwatch();
+            TimeSpan ts = stopWatch.Elapsed;
 
             do
             {
@@ -43,17 +44,18 @@ namespace ecris_vite
                     Console.WriteLine("\n{0}", motAleatoireNormal);
                     /*mots aléatoire normal*/
                     Console.Write("\nECRIS:");
-                    strmotsaisie = Console.ReadLine();
+                    stopWatch.Start();
                 }
-
-
-
+                    strmotsaisie = Console.ReadLine();
 
                     if (strmotsaisie == motAleatoireNormal)
                     {
                         Console.Clear();
+                        stopWatch.Stop();
                         Console.Write("\nPoints ");
-                        points++;
+                    Console.Write("\nTemps: {0}", elapsedTime);
+                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                    points++;
                         Console.WriteLine(points);
 
                         Console.WriteLine();
@@ -66,8 +68,10 @@ namespace ecris_vite
                     else
                     {
                         Console.Clear();
+                        stopWatch.Stop();
                         Console.Write("\nPoints ");
-                        points--;
+                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                    points--;
                         Console.WriteLine(points);
                         if (points == -10)
                         {
