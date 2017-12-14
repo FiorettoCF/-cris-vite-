@@ -19,8 +19,7 @@ namespace ecris_vite
             string strmotsaisie;
             int points = 0;
             bool fin = false;
-            Stopwatch stopWatch = new Stopwatch();
-            TimeSpan ts = stopWatch.Elapsed;
+
 
             do
             {
@@ -36,51 +35,51 @@ namespace ecris_vite
                 /*mots aleatoire normal*/
 
                 Console.WriteLine("\nRegles: vous devez écrire les mots qui s'afficheront a l'écran le plus vite possible.");
+                Console.ReadLine();
+                DateTime dateDebut = DateTime.Now;
 
-                ConsoleKeyInfo result = Console.ReadKey();
-                if (result.Key == ConsoleKey.Enter)
+                /*mots aléatoire normal*/
+                Console.WriteLine("\n{0}", motAleatoireNormal);
+                /*mots aléatoire normal*/
+                Console.Write("\nECRIS:");
+
+                strmotsaisie = Console.ReadLine();
+                DateTime dateFin = DateTime.Now;
+                TimeSpan elapsedTime = dateFin - dateDebut;
+
+                if (strmotsaisie == motAleatoireNormal)
                 {
-                    /*mots aléatoire normal*/
-                    Console.WriteLine("\n{0}", motAleatoireNormal);
-                    /*mots aléatoire normal*/
-                    Console.Write("\nECRIS:");
-                    stopWatch.Start();
-                }
-                    strmotsaisie = Console.ReadLine();
+                    Console.Clear();
 
-                    if (strmotsaisie == motAleatoireNormal)
-                    {
-                        Console.Clear();
-                        stopWatch.Stop();
-                        Console.Write("\nPoints ");
-                    Console.Write("\nTemps: {0}", elapsedTime);
-                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+                    Console.Write("\nPoints ");
                     points++;
-                        Console.WriteLine(points);
+                    Console.WriteLine(points);
 
-                        Console.WriteLine();
-                        if (points == 10)
-                        {
-                            fin = true;
-                            Console.WriteLine("\n Vous avez Gagné, bien joué");
-                        }
-                    }
-                    else
+                    Console.Write("\nTemps: {0} s", elapsedTime.TotalSeconds);
+
+                    Console.WriteLine();
+                    if (points == 10)
                     {
-                        Console.Clear();
-                        stopWatch.Stop();
-                        Console.Write("\nPoints ");
-                    string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
-                    points--;
-                        Console.WriteLine(points);
-                        if (points == -10)
-                        {
-                            fin = true;
-                            Console.WriteLine("\n Vous avez PERDU");
-                        }
-
+                        fin = true;
+                        Console.WriteLine("\n Vous avez Gagné, bien joué");
                     }
-                
+                }
+                else
+                {
+                    Console.Clear();
+
+                    Console.Write("\nPoints ");
+
+                    points--;
+                    Console.WriteLine(points);
+                    if (points == -10)
+                    {
+                        fin = true;
+                        Console.WriteLine("\n Vous avez PERDU");
+                    }
+
+                }
+
             } while (fin != true);
 
             
