@@ -9,6 +9,8 @@ namespace ecris_vite
 {
     class Program
     {
+        public static DateTime Now { get; private set; }
+
         static void Main(string[] args)
         {
             Random rand = new Random();
@@ -16,7 +18,7 @@ namespace ecris_vite
             string strmotsaisie;
             int points = 0;
             bool fin = false;
-            int temps = 0;
+
             
             do
             {
@@ -38,14 +40,8 @@ namespace ecris_vite
                 /*mots aléatoire normal*/
                 Console.Write("\nECRIS:");
                strmotsaisie = Console.ReadLine();
-              
-             do
-            {
-                Thread.Sleep(4000);
-                Console.Clear();
-                Console.Write("\nLost");
-                temps = 0;
-            } while (temps != 0);
+                
+            
                 
 
 
@@ -55,6 +51,8 @@ namespace ecris_vite
                     Console.Write("\nPoints ");
                     points++;
                     Console.WriteLine(points);
+                    
+                    Console.WriteLine();
                     if (points == 10)
                     {
                         fin = true;
@@ -83,7 +81,7 @@ namespace ecris_vite
             while (true)
             {
                 ConsoleKeyInfo result = Console.ReadKey();
-                if (result.Key == ConsoleKey.End)
+                if (result.Key == ConsoleKey.Spacebar)
                 {
                     Console.ReadKey();
                     break;
