@@ -26,15 +26,15 @@ namespace ecris_vite
                 /*mots aléatoire normal*/
                 string[] secretWordNormal =
                             {
-               "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations", "trottinette"
+               "trouillard", "rock", "voix", "clavier", "insect", "appendicite", "anticonstitutionnellement", "salutations", "trottinette", "intergouvernementalisations"
                             };
                 /*aléatoire normal*/
-                rndNumber = rand.Next(0, secretWordNormal.Length);
+                rndNumber = rand.Next(secretWordNormal.Length);
                 /*aléatoire*/
                 string motAleatoireNormal = secretWordNormal[rndNumber];
                 /*mots aleatoire normal*/
 
-                Console.WriteLine("\nRegles: vous devez écrire les mots qui s'afficheront a l'écran le plus vite possible.");
+                Console.WriteLine("\nRegles: vous devez écrire les mots qui s'afficheront a l'écran le plus vite possible. Si vous faîtes plus ou egal 5 secondes de temps vous perdez aucun point mais vous en gagnez pas non plus.\nAppuyez sur Enter pour commencer");
                 Console.ReadLine();
                 DateTime dateDebut = DateTime.Now;
 
@@ -56,6 +56,15 @@ namespace ecris_vite
                     Console.WriteLine(points);
 
                     Console.Write("\nTemps: {0} s", elapsedTime.TotalSeconds);
+                    if (elapsedTime.TotalSeconds >= 5)
+                    {
+                        Console.Clear();
+                        Console.Write("\nPoints ");
+                        points--;
+                        Console.WriteLine(points);
+                        Console.Write("\nTemps: {0} s", elapsedTime.TotalSeconds);
+                        Console.WriteLine();
+                    }
 
                     Console.WriteLine();
                     if (points == 10)
@@ -69,9 +78,12 @@ namespace ecris_vite
                     Console.Clear();
 
                     Console.Write("\nPoints ");
-
+                    
+                    
                     points--;
                     Console.WriteLine(points);
+                    Console.Write("\nTemps: {0} s", elapsedTime.TotalSeconds);
+                    Console.WriteLine();
                     if (points == -10)
                     {
                         fin = true;
