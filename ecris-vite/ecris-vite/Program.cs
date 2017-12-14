@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -18,8 +19,8 @@ namespace ecris_vite
             string strmotsaisie;
             int points = 0;
             bool fin = false;
+            Stopwatch stopWatch = new Stopwatch();
 
-            
             do
             {
                 /*mots aléatoire normal*/
@@ -35,49 +36,53 @@ namespace ecris_vite
 
                 Console.WriteLine("\nRegles: vous devez écrire les mots qui s'afficheront a l'écran le plus vite possible.");
 
-                /*mots aléatoire normal*/
-                Console.WriteLine("\n{0}", motAleatoireNormal);
-                /*mots aléatoire normal*/
-                Console.Write("\nECRIS:");
-               strmotsaisie = Console.ReadLine();
-                
-            
-                
-
-
-                if (strmotsaisie == motAleatoireNormal)
+                ConsoleKeyInfo result = Console.ReadKey();
+                if (result.Key == ConsoleKey.Enter)
                 {
-                    Console.Clear();
-                    Console.Write("\nPoints ");
-                    points++;
-                    Console.WriteLine(points);
-                    
-                    Console.WriteLine();
-                    if (points == 10)
-                    {
-                        fin = true;
-                        Console.WriteLine("\n Vous avez Gagné, bien joué");
-                    }
+                    /*mots aléatoire normal*/
+                    Console.WriteLine("\n{0}", motAleatoireNormal);
+                    /*mots aléatoire normal*/
+                    Console.Write("\nECRIS:");
+                    strmotsaisie = Console.ReadLine();
                 }
-                else
-                {
-                    Console.Clear();
-                    Console.Write("\nPoints ");
-                    points--;
-                    Console.WriteLine(points);
-                    if (points == -10)
-                    {
-                        fin = true;
-                        Console.WriteLine("\n Vous avez PERDU");
-                    }
 
-                }
+
+
+
+                    if (strmotsaisie == motAleatoireNormal)
+                    {
+                        Console.Clear();
+                        Console.Write("\nPoints ");
+                        points++;
+                        Console.WriteLine(points);
+
+                        Console.WriteLine();
+                        if (points == 10)
+                        {
+                            fin = true;
+                            Console.WriteLine("\n Vous avez Gagné, bien joué");
+                        }
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.Write("\nPoints ");
+                        points--;
+                        Console.WriteLine(points);
+                        if (points == -10)
+                        {
+                            fin = true;
+                            Console.WriteLine("\n Vous avez PERDU");
+                        }
+
+                    }
+                
             } while (fin != true);
 
             
             
             /*quitter le programme*/
-            Console.Write("\nPresser sur End deux fois pour terminer le programme");
+            Console.Write("\nPresser sur Espace deux fois pour terminer le programme");
             while (true)
             {
                 ConsoleKeyInfo result = Console.ReadKey();
